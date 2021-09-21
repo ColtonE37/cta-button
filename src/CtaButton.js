@@ -7,25 +7,24 @@ export class CtaButton extends LitElement {
         display: inline-block;
         padding: 25px;
         color: var(--cta-button-text-color, #000);
-        --ctabuttonBackgroundColor: #000;
-        --ctabuttonTextColor: purple;
+        --ctabuttonBackgroundColor: lime;
         --ctabuttonFont: sans-serif;
       }
 
       button {
         display: inline-block;
-        color: var(--ctabuttonTextColor);
+        color: var(--ctabutton-text-color);
         border: 2px solid var(--ctabuttonBackgroundColor);
-        width: 675px;
+        width: 690px;
         height: 90px;
         font-size: 45px;
+        font-family: 'Times New Roman';
       }
 
       button:hover {
-        color: red;
-        background-color: #66ff00;
+        background-color: #000;
         cursor: pointer;
-      }
+     }
 
       button:focus {
         color: black;
