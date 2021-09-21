@@ -5,31 +5,22 @@ export class CtaButton extends LitElement {
     return css`
       :host {
         display: inline-block;
-        padding: 25px;
+        padding: 5px;
         color: var(--cta-button-text-color, #000);
-        --ctabuttonBackgroundColor: lime;
         --ctabuttonFont: 'Times New Roman', sans-serif;
       }
 
       button {
-        display: inline-block;
+        // display: block;
+        margin: 3px 250px;
         color: var(--cta-button-text-color);
-        border: 4px solid var(--ctabuttonBackgroundColor);
-        width: 690px;
-        height: 90px;
-        font-size: 45px;
+        font-size: 50px;
         font-family: var(--ctabuttonFont);
+        border-radius: 12px;
       }
 
-      button:hover {
-        background-color: black;
-        cursor: pointer;
-     }
-
-      button:focus {
-        color: black;
-        background-color: transparent;
-      }
+      button:hover,
+      button:focus,
       button:active {
         background-color: yellow;
       }
@@ -39,7 +30,6 @@ export class CtaButton extends LitElement {
   static get properties() {
     return {
       title: { type: String},
-      buttonText: { type: String},
       buttonLink: { type: String},
     };
   }
@@ -53,7 +43,7 @@ export class CtaButton extends LitElement {
   render() {
     return html`
     <h2>${this.title}</h2>
-  <a href=${this.buttonLink} rel="noreferrer" target="_blank" role="button"
+  <a href=${this.buttonLink} tabindex="-1" rel="noreferrer" target="_blank" role="button"
   ><button>${this.buttonText}</button></a
   >
     `;
