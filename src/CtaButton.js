@@ -8,21 +8,21 @@ export class CtaButton extends LitElement {
         padding: 25px;
         color: var(--cta-button-text-color, #000);
         --ctabuttonBackgroundColor: lime;
-        --ctabuttonFont: sans-serif;
+        --ctabuttonFont: 'Times New Roman', sans-serif;
       }
 
       button {
         display: inline-block;
-        color: var(--ctabutton-text-color);
-        border: 2px solid var(--ctabuttonBackgroundColor);
+        color: var(--cta-button-text-color);
+        border: 4px solid var(--ctabuttonBackgroundColor);
         width: 690px;
         height: 90px;
         font-size: 45px;
-        font-family: 'Times New Roman';
+        font-family: var(--ctabuttonFont);
       }
 
       button:hover {
-        background-color: #000;
+        background-color: black;
         cursor: pointer;
      }
 
@@ -34,6 +34,14 @@ export class CtaButton extends LitElement {
         background-color: yellow;
       }
     `;
+  }
+
+  static get properties() {
+    return {
+      title: { type: String},
+      buttonText: { type: String},
+      buttonLink: { type: String},
+    };
   }
 
   constructor() {
