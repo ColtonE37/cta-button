@@ -1,0 +1,1 @@
+Met online 9/20 to share our progress and figure out how to make some of these functions work together.
