@@ -4,25 +4,22 @@
   <meta charset="utf-8">
   <style>
     body {
-      background: #1bbcd8;
+      background: #D27D2D;
     }
   </style>
 </head>
 <body>
   <div id="demo"></div>
+  
+  <!-- Put eventListener in here somewhere to add functionality -->
+  <h2>Do I Understand This Assignment?</h2>
+  <input type="checkbox">Check This Box First!</input>
+  <br/>
+  <br/>
+  <button disabled>Find Out Here!</button>
 
   <script type="module">
-    import { html, render } from 'lit';
     import '../cta-button.js';
-
-    const title = 'Click Below To See If I Kinda Maybe Understand This Assignment So Far!';
-    render(
-      html`
-        <cta-button .title=${title}>
-        </cta-button>
-      `,
-      document.querySelector('#demo')
-    );
   </script>
 </body>
 </html>

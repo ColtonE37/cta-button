@@ -7,14 +7,14 @@ export class CtaButton extends LitElement {
         display: inline-block;
         padding: 5px;
         color: var(--cta-button-text-color, #000);
+        --ctabuttonTextColor: #ffffff;
+        --disabledbuttonBackground: #ffffff
         --ctabuttonFont: 'Times New Roman', sans-serif;
       }
 
       button {
-        // display: block;
-        margin: 3px 250px;
         color: var(--cta-button-text-color);
-        font-size: 50px;
+        font-size: 25px;
         font-family: var(--ctabuttonFont);
         border-radius: 12px;
       }
@@ -22,7 +22,13 @@ export class CtaButton extends LitElement {
       button:hover,
       button:focus,
       button:active {
-        background-color: yellow;
+        background-color: red;
+      }
+
+      button:disabled {
+        color: var(--ctabuttonTextColor);
+        background-color: var(--disabledbuttonBackground);
+        cursor: not-allowed;
       }
     `;
   }
@@ -30,22 +36,21 @@ export class CtaButton extends LitElement {
   static get properties() {
     return {
       title: { type: String},
-      buttonLink: { type: String},
+      link: { type: String},
+      disabled: { type: Boolean, reflect: true}
     };
   }
 
   constructor() {
     super();
-    this.buttonText = "Click Me!";
-    this.buttonLink = "https://me.me/i/yes-neiniegerierator-ie-yes-i-did-it-victory-baby-861706f5aa474036a024011734c5a374"
+    this.link = "https://me.me/i/yes-neiniegerierator-ie-yes-i-did-it-victory-baby-861706f5aa474036a024011734c5a374"
+    this.disabled = false;
   }
 
   render() {
     return html`
-    <h2>${this.title}</h2>
-  <a href=${this.buttonLink} tabindex="-1" rel="noreferrer" target="_blank" role="button"
-  ><button>${this.buttonText}</button></a
-  >
+  <a href=${this.buttonLink} tabindex="-1" rel="noreferrer" target="_blank" role="button"></a>
+
     `;
   }
 }
