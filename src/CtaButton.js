@@ -6,15 +6,22 @@ export class CtaButton extends LitElement {
       :host {
         display: inline-block;
         padding: 5px;
-        color: var(--cta-button-text-color, #000);
-        --ctabuttonTextColor: #ffffff;
-        --disabledbuttonBackground: grey;
-        --ctabuttonFont: 'Times New Roman', sans-serif;
+        --ctabuttonColor: black;
+        --ctabuttonBackgroundColor: white;
+        --ctabuttonActiveBackgroundColor: red;
+        --ctabuttonActiveColor: white;
+        --ctabuttonDisabledBackgroundColor: grey;
+        --ctabuttonFontFamily: 'Times New Roman', sans-serif;
+      }
+      :host([invert]) {
+        --ctabuttonColor: white;
+        --ctabuttonBackgroundColor: black;
       }
       .assignment {
-        color: var(--cta-button-text-color);
+        background-color: var(--ctabuttonBackgroundColor);
+        color: var(--ctabuttonColor);
         font-size: 25px;
-        font-family: var(--ctabuttonFont);
+        font-family: var(--ctabuttonFontFamily);
         border-radius: 12px;
         border: 1px solid;
         text-decoration: none;
@@ -23,11 +30,11 @@ export class CtaButton extends LitElement {
       .assignment:hover,
       .assignment:focus,
       .assignment:active {
-        background-color: red;
+        background-color: var(--ctabuttonActiveBackgroundColor);
+        color: var(--ctabuttonActiveColor);
       }
       .assignment:disabled {
-        color: var(--ctabuttonTextColor);
-        background-color: var(--disabledbuttonBackground);
+        background-color: var(--ctabuttonDisabledBackgroundColor);
         cursor: not-allowed;
       }
     `;
@@ -37,24 +44,32 @@ export class CtaButton extends LitElement {
     return {
       title: { type: String },
       link: { type: String },
-      disabled: { type: Boolean, reflect: true }
+      disabled: { type: Boolean, reflect: true },
+      invert: { type: Boolean, reflect: true },
     };
   }
 
   constructor() {
     super();
-    this.link = "https://me.me/i/yes-neiniegerierator-ie-yes-i-did-it-victory-baby-861706f5aa474036a024011734c5a374"
-    this.disabled = true;
-  }
-
-  _navigateToLink() {
-    // https://developer.mozilla.org/en-US/docs/Web/API/Window/open
-    window.open(this.link, "_blank");
+    this.title = 'Click here!';
+    this.link =
+      'https://me.me/i/yes-neiniegerierator-ie-yes-i-did-it-victory-baby-861706f5aa474036a024011734c5a374';
+    this.disabled = false;
+    this.invert = false;
   }
 
   render() {
     return html`
-  <button class="assignment" @click="${this._navigateToLink}" ?disabled="${this.disabled}">Click Here!</button>
-      `;
+      <a
+        href="${this.link}"
+        target="_blank"
+        tabindex="-1"
+        rel="noopener noreferrer"
+      >
+        <button class="assignment" ?disabled="${this.disabled}">
+          ${this.title}
+        </button>
+      </a>
+    `;
   }
 }
