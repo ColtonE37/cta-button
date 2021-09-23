@@ -1,4 +1,6 @@
 import { html, css, LitElement } from 'lit';
+import '@lrnwebcomponents/simple-icon/lib/simple-icon-lite.js';
+import '@lrnwebcomponents/simple-icon/lib/simple-icons.js';
 
 export class CtaButton extends LitElement {
   static get styles() {
@@ -19,7 +21,7 @@ export class CtaButton extends LitElement {
         font-size: 25px;
         font-family: var(--ctabuttonFontFamily);
         border-radius: 12px;
-        border: 2px solid;
+        border: 2px solid black;
         text-decoration: none;
         padding: 6px;
       }
@@ -41,15 +43,19 @@ export class CtaButton extends LitElement {
     return {
       title: { type: String },
       link: { type: String },
-      disabled: { type: Boolean, reflect: true }
+      disabled: { type: Boolean, reflect: true },
+      icon: { type: String },
     };
   }
 
   constructor() {
     super();
-    this.title = "Click Here!"
-    this.link = "https://me.me/i/yes-neiniegerierator-ie-yes-i-did-it-victory-baby-861706f5aa474036a024011734c5a374"
+    this.title = 'Click Here!';
+    this.link =
+      'https://me.me/i/yes-neiniegerierator-ie-yes-i-did-it-victory-baby-861706f5aa474036a024011734c5a374';
     this.disabled = false;
+    this.iconLeft = 'hardware:keyboard-arrow-left';
+    this.iconRight = 'hardware:keyboard-arrow-right';
   }
 
   // _navigateToLink() {
@@ -59,9 +65,18 @@ export class CtaButton extends LitElement {
 
   render() {
     return html`
-    <a href="${this.link}" target="_blank" tabindex="-1" rel="noopener noreferrer" >
-      <button class="assignment" ?disabled="${this.disabled}"> ${this.title}</button>
-    </a>
-      `;
+      <a
+        href="${this.link}"
+        target="_blank"
+        tabindex="-1"
+        rel="noopener noreferrer"
+      >
+        <button class="assignment" ?disabled="${this.disabled}">
+          <simple-icon-lite icon="${this.iconRight}"></simple-icon-lite> ${this
+            .title}
+          <simple-icon-lite icon="${this.iconLeft}"></simple-icon-lite>
+        </button>
+      </a>
+    `;
   }
 }
